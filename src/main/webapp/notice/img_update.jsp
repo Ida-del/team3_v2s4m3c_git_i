@@ -43,14 +43,14 @@
     <c:if test="${nfile1.endsWith('jpg') || nfile1.endsWith('png') || nfile1.endsWith('gif')}">
       <FORM name='frm' method='POST' action='./img_delete.do' class="form-horizontal">
         <!-- FK memberno 지정 -->
-        <input type='hidden' name='memberno' id='memberno' value='1'>
+        <input type='hidden' name='m_no' id='m_no' value='${param.m_no }'>
         <input type='hidden' name=noticeno id='noticeno' value="${param.noticeno }">
 
         <IMG src="./storage/main_images/${nfile1 }" style="width: 50%; margin-bottom: 10px;">
         
         <div class="form-group">   
           <div class="col-md-12">
-            <input type='password' class="form-control" name='notice_pw'  value='1234' placeholder="패스워드" style='width: 20%;'>
+            <input type='password' class="form-control" name='notice_pw'  value='' placeholder="패스워드" style='width: 20%;'>
           </div>
         </div>
         

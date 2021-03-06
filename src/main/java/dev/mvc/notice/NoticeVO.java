@@ -16,7 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class NoticeVO {
   private int noticeno;
   
-  private int memberno;
+  private int m_no;
   
   private String title = "";
   
@@ -49,12 +49,12 @@ public class NoticeVO {
     this.noticeno = noticeno;
   }
 
-  public int getMemberno() {
-    return memberno;
+  public int getM_no() {
+    return m_no;
   }
 
-  public void setMemberno(int memberno) {
-    this.memberno = memberno;
+  public void setM_no(int m_no) {
+    this.m_no = m_no;
   }
 
   public String getTitle() {

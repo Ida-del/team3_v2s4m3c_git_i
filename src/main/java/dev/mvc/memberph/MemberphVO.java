@@ -5,18 +5,18 @@ import org.springframework.web.multipart.MultipartFile;
 /*
 CREATE TABLE memberph(
     orderno                         NUMBER(10)     NOT NULL    PRIMARY KEY,
-    memberno                          NUMBER(10)     NOT NULL,
+    m_no                          NUMBER(10)     NOT NULL,
     p_number                        NUMBER(20)     NOT NULL,
     p_infor                           VARCHAR2(50)     NOT NULL,
     p_amount                        NUMBER(20)     NOT NULL,
     p_state                           VARCHAR2(30)     NOT NULL,
-  FOREIGN KEY (memberno) REFERENCES memberin (memberno)
+  FOREIGN KEY (m_no) REFERENCES memberin (m_no)
 );
 */
 
 public class MemberphVO {
   private int orderno;
-  private int memberno;
+  private int m_no;
   private int p_number;
   private String p_infor;
   private int p_amount;
@@ -65,10 +65,10 @@ public class MemberphVO {
     this.orderno = orderno;
   }
   public int getMemberno() {
-    return memberno;
+    return m_no;
   }
-  public void setMemberno(int memberno) {
-    this.memberno = memberno;
+  public void setMemberno(int m_no) {
+    this.m_no = m_no;
   }
   public int getP_number() {
     return p_number;

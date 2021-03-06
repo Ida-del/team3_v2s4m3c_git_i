@@ -1,62 +1,118 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-<% 
-// String root = request.getContextPath(); // /resort 
-// ${pageContext.request.contextPath}
-%>
-
-<DIV class='container' style='width: 100%;'>
-  <!-- 화면 상단 메뉴 -->
-  <DIV class='top_img'>
-    <DIV class='top_menu_label'>[TEST] TEAM3 PROJECT</DIV>
-    <NAV class='top_menu'  style='background-color: gray;'>
-      <span style='padding-left: 0.5%;'></span>
-      <A class='top_menu_link'  href='${pageContext.request.contextPath}' >HOME</A> <span class='top_menu1'> | </span>
-      
-       <c:choose>
-        <c:when test="${sessionScope.id == null}">
-          <A class='top_menu_link'  href='${pageContext.request.contextPath}/member/login.do' >Login</A> <span class='top_menu_sep'> &nbsp; </span>
-          <A class='top_menu_link'  href='${pageContext.request.contextPath}/member/create.do'>회원 가입</A><span class='top_menu_sep'>&nbsp;</span>
-        </c:when>
-        <c:otherwise>
-          ${sessionScope.id } <A class='top_menu_link'  href='${pageContext.request.contextPath}/member/logout.do' >Logout</A> <span class='top_menu_sep'> &nbsp; </span>
-        </c:otherwise>
-      </c:choose>
-      
-      <A class='top_menu_link'  href='${pageContext.request.contextPath}/memberph/list.do'>주문 내역</A> <span class='top_menu1'> | </span>  
-          
-      [
-      <c:choose>
-        <c:when test="${sessionScope.id_admin == null}">
-          <A class='top_menu_link'  href='${pageContext.request.contextPath}/admin/login.do' >관리자 Login</A>
-        </c:when>
-        <c:otherwise>
-          ${sessionScope.id_admin } <A class='top_menu_link'  href='${pageContext.request.contextPath}/admin/logout.do' >관리자 Logout</A><span class='top_menu_sep'>&nbsp;</span>
-          <A class='top_menu_link'  href='${pageContext.request.contextPath}/member/list.do'>회원목록</A><span class='top_menu_sep'>&nbsp;</span>           
-        </c:otherwise>
-      </c:choose>
-      ]           
-          
-    </NAV>
-  </DIV>
-  
-  <!-- 화면을 2개로 분할하여 좌측은 메뉴, 우측은 내용으로 구성 -->  
-  <DIV class="row" style='margin-top: 2px;'></DIV>
-    <DIV class="col-sm-3 col-md-2"> <!-- 메뉴 출력 컬럼 -->
-      <img src='${pageContext.request.contextPath}/menu/images/book2.png' style='width: 50%;'>
-      <div style='margin-top: 5px;'>
-        <img src='${pageContext.request.contextPath}/menu/images/book1.png' style='width: 30%;'>E-BOOK
-      </div>
-       ▷ <A href='${pageContext.request.contextPath}/contents/list_all.do'>전체글</A>
-       <!-- Spring 출력 카테고리 그룹 / 카테고리 -->
-      <%-- <c:import url="/cate/list_index_left.do" /> --%>  
+ 
+ <!-- 최외각 container  -->
+ <DIV id="wrapper">
+  <div class="container-fluid">
+  <header>
+    <div class="top_logo">
+      <h1><a href="${pageContext.request.contextPath}/index.do">TEAM3 E-books</a></h1>
+    </div>  
+     
+    <div class="btn_menu">
+     <a href="#" class="btnopen">Menu</a>
+     <a href="#" class="btnClose">Close</a>
     </div>
-      
-    <DIV class="col-sm-9 col-md-10 cont">  <!-- 내용 출력 컬럼 -->  
-      <DIV class='content'>
+    
+    <!-- MobileMenu -->
+    <nav id="gnb" class="mb_gnb" style="display:none;">
+      <div class="login">
+       <c:choose>
+         <c:when test="${sessionScope.id == null}">          
+            <a href='${pageContext.request.contextPath}/member/login.do' >LOGIN</a> <span>I</span> 
+            <a href='${pageContext.request.contextPath}/member/create.do'>JOIN</a>
+         </c:when>
+         <c:otherwise>
+            <a href='${pageContext.request.contextPath}/cart/list.do' >
+              <i class="fa fa-shopping-cart" style="font-size:23px; color: orange;" title="go to cart"></i> 
+            </a> 
+            <span>I</span> 
+            <a href='${pageContext.request.contextPath}/orderreq/list.do' >
+              Orders
+            </a> 
+            <span>I</span> 
+            <a href='${pageContext.request.contextPath}/member/logout.do'>Logout</a>             
+         </c:otherwise>
+        </c:choose>       
+      </div>
+      <ul>   
+        <li><a href="javascript:alert('Categories');">Categories</a></li>
+        <li id="has-sub01"><a href="#">Books</a>
+         <ul id="sub-bar01">
+           <li><a href="javascript:alert('Bestsellers');">Bestsellers</a></li>
+           <li><a href="javascript:alert('Editors' Picks');">Editors' Picks</a></li>
+           <li><a href="${pageContext.request.contextPath}/ebook/list.do">All books</a></li>
+         </ul>
+        </li>
+        <li><a href="${pageContext.request.contextPath}/survey/list.do">Online Survey</a></li>
+        <li><a href="${pageContext.request.contextPath}/notice/list.do">Notice</a></li>
+        <li id="has-sub02"><a href="#">Get help</a>
+         <ul id="sub-bar02">
+           <li><a href="${pageContext.request.contextPath}/customer/list_all.do">Inquiry Details</a></li>
+         </ul>      
+        </li>        
+      </ul>
+    </nav>   <!-- //MobileMenu -->
+  
+    <!-- PC Menu -->
+    <nav id="gnb pc" class="pc_gnb">
+     <ul class="depth1">
+       <li class="gnb01"><a href="javascript:alert('Categories');" class="menu">Categories</a></li>
+       <li class="gnb02 has-sub"><a href="#" class="menu">Books</a>
+         <ul class="gnb02 depth2">
+          <li><a href="javascript:alert('Bestsellers');">Bestsellers</a></li>
+          <li><a href="javascript:alert('Editors' Picks');">Editors' Picks</a></li>  
+          <li><a href="${pageContext.request.contextPath}/ebook/list.do">All books</a></li>  
+         </ul>
+       </li>
+       <li class="gnb03"><a href="${pageContext.request.contextPath}/event/list.do" class="menu">Event</a></li>
+       <li class="gnb04"><a href="${pageContext.request.contextPath}/notice/list.do" class="menu">Notice</a></li>
+       <li class="gnb05 has-sub"><a href="#" class="menu">Get help</a>
+         <ul class="gnb05 depth2">
+           <li><a href="${pageContext.request.contextPath}/customer/list_all.do">Inquiry Details</a></li>
+         </ul>  
+       </li>
+       <li class="gnb07 has-sub"><a href="#" class="menu">OpenSpace</a>
+         <ul class="gnb07 depth2">
+           <li><a href="${pageContext.request.contextPath}/survey/list.do">Online Survey</a></li>
+         </ul>  
+       </li>
+       <li class="gnb06"></li>
+       <c:choose>
+         <c:when test="${sessionScope.id == null}">             
+          <li class="gnb98 has-sub"><a href="${pageContext.request.contextPath}/member/login.do" class="menu">SIGN IN</a>
+            <ul class="gnb98 depth2">
+              <li><a href="${pageContext.request.contextPath}/member/login.do" >Login</a></li>
+              <li><a href="${pageContext.request.contextPath}/member/create.do" >Registration</a></li>
+            </ul>
+          </li>
+         </c:when>
+         <c:otherwise> 
+          <li class="gnb97 has-sub"><a href="#" class="menu">Hello, ${sessionScope.id}!</a>
+           <ul class="gnb97 depth2">
+             <li><a href="${pageContext.request.contextPath}/orderreq/list.do" class="menu">Orders</a></li>
+             <li><a href="${pageContext.request.contextPath}/member/logout.do" class="menu">
+                   <i class="fas fa-sign-out-alt" title="LOGOUT" style="font-size:23px; color: lime;"></i>
+                  </a>
+             </li>
+           </ul>                      
+          </li>
+          <li class="gnb97-1">
+            <a href="${pageContext.request.contextPath}/cart/list.do" class="menu">
+            <i class="fa fa-shopping-cart" style="font-size:23px; color: orange;" title="장바구니"></i>
+            </a>
+          </li>
+          
+         </c:otherwise> 
+       </c:choose> 
+     </ul>
 
-
-
-
-
+    </nav>
+   <!-- // PC Menu -->  
+  </header>
+ 
+  <div id="bg"></div>
+  
+  <section>
+   <div class="main_area col-sm-9 col-md-10 cont" > 
+      <div class="container">

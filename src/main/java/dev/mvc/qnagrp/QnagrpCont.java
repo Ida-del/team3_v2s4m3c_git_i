@@ -60,7 +60,7 @@ public class QnagrpCont {
   @RequestMapping(value = "/qnagrp/list.do", method = RequestMethod.GET)
   public ModelAndView list() {
     ModelAndView mav = new ModelAndView();
-    mav.setViewName("/qnagrp/list"); // /webapp/qnagrp/list.jsp
+    mav.setViewName("/qnagrp/list_ajax"); // /webapp/qnagrp/list.jsp
 
     List<QnagrpVO> list = this.qnagrpProc.list_qnagrpno_asc();
     mav.addObject("list", list);

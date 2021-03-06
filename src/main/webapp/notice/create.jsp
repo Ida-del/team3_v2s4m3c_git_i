@@ -48,7 +48,7 @@
   <FORM name='frm' method='POST' action='./create.do' class="form-horizontal"
              enctype="multipart/form-data" >
              
-  <input type="hidden" name="memberno" value="1">
+  <input type="hidden" name="m_no" value="1">
   
   <div class="form-group">
      <label class="control-label col-md-2">공지사항 제목</label>

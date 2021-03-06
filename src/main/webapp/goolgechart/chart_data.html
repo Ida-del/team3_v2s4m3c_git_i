@@ -1,0 +1,49 @@
+<!DOCTYPE html> 
+<html lang="ko"> 
+<head> 
+<meta charset="UTF-8"> 
+<title></title> 
+<script type="text/JavaScript" 
+          src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+          
+<link href="../css/style.css" rel="Stylesheet" type="text/css">
+</head> 
+<body>
+<script type="text/javascript">
+  function wl(str) {
+    document.writeln(str + '<br>'); // BODY 태그로 출력됨.
+  }
+  
+  wl('배열 형태의 문자열 출력')
+  var data2 = "[['Task', 'Hours per Day'],['Work', 11],['Eat', 2],['Commute',2],['Watch TV', 2],['Sleep', 7]  ]";
+  wl(typeof(data2));
+  wl('문자열을 -> Javascript 배열로 변환')
+  var data2_array = eval(data2)
+  wl(typeof(data2_array));
+  wl('------------------------------------');
+  wl('JSON -> Javascript 배열로 변환');
+  var rdata = '[{"Task": "Hours per Day"},{"Work": 11},{"Eat": 2},{"Commute": 2},{"Watch_TV": 2}, {"Sleep": 7}]';
+  rdata = JSON.parse(rdata);
+
+  var chart_data = new Array();
+  chart_data.push(["Task", rdata[0].Task]);
+  chart_data.push(["Work", rdata[1].Work]);
+  chart_data.push(["Eat", rdata[2].Eat]);
+  chart_data.push(["Commute", rdata[3].Commute]);
+  chart_data.push(["Watch TV", rdata[4].Watch_TV]);
+  chart_data.push(["Sleep", rdata[5].Sleep]);
+  
+  for (var i=0; i< chart_data.length; i++) {  // 0 ~ 2
+    var row = chart_data[i]; // 배열에서 하나의 객체 추출
+    wl('키: ' + row[0] + ' 값: ' + row[1]);
+  } 
+          
+  </script> 
+</body>
+ 
+</html>
+
+
+
+
+

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace = "dev.mvc.admin.AdminDAOInter">
+
+  <select id="list" resultType="AdminVO"> 
+    SELECT adm_no, adm_id, adm_passwd, adm_name, adm_rdate
+    FROM admin
+    ORDER BY adm_no ASC
+  </select>
+  
+  <!-- id로 관리자 정보 조회 -->
+  <select id="readById" resultType="AdminVO" parameterType="String">
+    SELECT adm_no, adm_id, adm_passwd, adm_name, adm_rdate
+    FROM admin
+    WHERE adm_id = #{adm_id}
+  </select>
+  
+  <select id="login" resultType="int" parameterType="Map">
+    SELECT COUNT(adm_no) AS cnt
+    FROM admin
+    WHERE adm_id=#{adm_id} AND adm_passwd=#{adm_passwd}
+  </select>
+
+</mapper>

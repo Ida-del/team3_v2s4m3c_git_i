@@ -10,18 +10,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="dev.mvc.bookshelf.BookshelfDAOInter">
   
   <insert id="create" parameterType="BookshelfVO">
-    INSERT INTO bookshelf(bookshelfno, memberno, p_name, p_infor, file1, thumb1, size1)
-    VALUES(bookshelf_seq.nextval, #{memberno}, #{p_name}, #{p_infor}, #{file1}, #{thumb1}, #{size1})
+    INSERT INTO bookshelf(bookshelfno, m_no, p_name, p_infor, file1, thumb1, size1)
+    VALUES(bookshelf_seq.nextval, #{m_no}, #{p_name}, #{p_infor}, #{file1}, #{thumb1}, #{size1})
   </insert>
   
   <select id="list_bookshelfno_asc" resultType="BookshelfVO">
-    SELECT bookshelfno, memberno, p_name, p_infor, file1, thumb1, size1
+    SELECT bookshelfno, m_no, p_name, p_infor, file1, thumb1, size1
     FROM bookshelf      
     ORDER BY bookshelfno asc
   </select>
 
   <select id="read" parameterType="int" resultType="BookshelfVO">
-    SELECT bookshelfno, memberno, p_name, p_infor, file1, thumb1, size1
+    SELECT bookshelfno, m_no, p_name, p_infor, file1, thumb1, size1
     FROM bookshelf
     WHERE bookshelfno = #{bookshelfno}
   </select>

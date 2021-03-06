@@ -10,7 +10,7 @@
 
 <input type="hidden" name="m_no" value="${param.m_no}">
   <DIV class="title_line" style="margin-left: 3px;">
-   <A href='./list_all.do?nowPage=1'>1:1 문의</A> > mno:「${param.m_no}」님 문의 목록
+   <A href='./list_all.do?nowPage=1'> 전체 문의</A> > 회원번호 : ${param.m_no}번 목록
   </DIV>
   
 <!--   <ASIDE class="aside_left">

@@ -81,7 +81,7 @@
               <c:choose>
                 <c:when test="${cs_thumb1.endsWith('jpg') || cs_thumb1.endsWith('png') || cs_thumb1.endsWith('gif')}">
                   <a href="./read.do?cs_no=${cs_no}&m_no=${param.m_no}&m_id=${param.m_id}">
-                    <IMG src="./storage/main_images/${cs_thumb1}" style="width: 100px; height:110px;">
+                    <IMG src="../adm/customer/storage/main_images/${cs_thumb1}" style="width: 100px; height:110px;">
                   </a> 
                 </c:when>
                 <c:otherwise> <!-- 이미지가 아닌 일반 파일 -->

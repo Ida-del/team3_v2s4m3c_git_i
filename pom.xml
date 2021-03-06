@@ -3,8 +3,8 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>dev.mvc</groupId>
-  <artifactId>team3_git</artifactId>
-  <name>team3_v2s4m3c_git</name>
+  <artifactId>team3_testgit</artifactId>
+  <name>team3_v2s4m3c_testgit</name>
   <packaging>war</packaging>
   <version>1.0.0-BUILD-SNAPSHOT</version>
   <properties>
@@ -165,7 +165,29 @@
       <artifactId>json</artifactId>
       <version>20180813</version>
     </dependency>
- 
+
+    <!-- jackson(JSON 데이터 구조를 처리) 라이브러리 추가 -->
+    <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-core</artifactId>
+        <version>2.6.3</version>
+    </dependency>
+    <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>2.6.3</version>
+    </dependency>
+    <dependency>
+        <groupId>org.codehaus.jackson</groupId>
+        <artifactId>jackson-mapper-asl</artifactId>
+        <version>1.5.0</version>
+    </dependency>
+    <!-- google chart data - json형변환  -->
+    <dependency>
+      <groupId>com.googlecode.json-simple</groupId>
+      <artifactId>json-simple</artifactId>
+      <version>1.1</version>
+    </dependency> 
     <!-- 메일 전송 -->
     <!-- https://mvnrepository.com/artifact/javax.mail/javax.mail-api -->
     <dependency>
@@ -195,6 +217,7 @@
       <artifactId>commons-io</artifactId>
       <version>2.6</version>
     </dependency>
+ 
  
     <!-- ******************** 추가 선언 영역 종료 ******************** -->
           

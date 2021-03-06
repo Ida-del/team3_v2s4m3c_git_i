@@ -32,6 +32,12 @@ public interface EbookProcInter {
   public List<EbookVO> list_ebook_category(int cateno);
   
   /**
+   * 최근 등록된 이북 10개
+   * @return
+   */
+  public List<EbookVO> list_ebno_desc_latest();
+  
+  /**
    * 검색 + 페이징 목록
    * @param map
    * @return

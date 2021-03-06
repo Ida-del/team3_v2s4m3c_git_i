@@ -147,6 +147,15 @@
     color: #8e8e8e;
   }
   
+  .menu_line {
+    width: 100%;
+    text-align: left;
+    border-bottom: dotted 1px #777777;
+    margin: 1px 0px 20px 0px;   /* top -> right -> bottom -> left */
+    padding-left: 4px;
+    padding-bottom: 5px;
+  }  
+  
   .fieldset_basic {
     width: 90%; 
     margin: 10px auto; 
@@ -344,4 +353,10 @@
     padding-left: 20px; 
   }
   
-  
+  .container-fluid, .container-sm, .container-md, .container-lg, .container-xl {
+  width: 100%;
+  padding-right: 0.75rem;
+  padding-left: 0.75rem;
+  margin-right: auto;
+  margin-left: auto;
+}

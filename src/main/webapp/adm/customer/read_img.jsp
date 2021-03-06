@@ -7,41 +7,24 @@
 <c:set var="m_no" value="${customerVO.m_no }" />
 
   <DIV class="title_line">
+   <A href='./list_all.do?nowPage=1'> 전체 문의</A> >
    <A href="./list_by_mno_paging.do?m_no=${m_no}&nowPage=${param.nowPage}">
-    m_no :「${customerVO.m_no}」님 문의 >
+    회원번호 : ${param.m_no} -
    </A> 
    ${customerVO.cs_title} 
   </DIV>
-  <ASIDE class="aside_left">
-    <%-- <A href='./list_all.do?nowPage=${param.nowPage}'>1:1 문의</A> -  --%>
-    <A href="./list_all.do?nowPage=${param.nowPage}">1:1 문의</A>
-  </ASIDE>
-  <ASIDE class="aside_right">
+  
+  <ASIDE class="aside_left" style="margin-left: 3px;">
     <A href='../customer/create.do'>문의하기</A>
-<%--     <c:choose>
-      <c:when test="${customerVO.cs_file1.trim().length() > 0 }"> <!-- 메인 이미지가 있을 때  -->
-        <span class='menu_divide' > | </span> 
-        <A href='./img_update.do?cs_no=${cs_no}'>Main 이미지 변경/삭제</A>      <!--  출력 -->
-      </c:when>
-      <c:otherwise>                                                    <!-- 메인 이미지가 없을 때 -->
-        <span class='menu_divide' > | </span> 
-        <A href='./img_create.do?cs_no=${cs_no}'>Main 이미지 등록</A>     
-      </c:otherwise>
-    </c:choose>
-    <span class='menu_divide' > | </span>
-    <A href='../attachfile/create.do?cs_no=${cs_no}'>파일 첨부하기</A> --%>
     <span class='menu_divide' > | </span>
     <A href="javascript:location.reload();">새로고침</A>
-<%--     <span class='menu_divide' > | </span> 
-    <A href='./list_by_mno_table_img1.do'>내 문의 목록</A> 
-    <span class='menu_divide' > | </span> 
-    <A href='./update.do?cs_no=${cs_no}&cs_type=${customerVO.cs_type}&m_no=${customerVO.m_no}&nowPage=${param.nowPage}'>수정</A>--%>
+    <span class='menu_divide' > | </span>
+    <A href='./update.do?cs_no=${cs_no}&cs_type=${customerVO.cs_type}&m_no=${customerVO.m_no}&nowPage=${param.nowPage}'>수정</A>
     <span class='menu_divide' > | </span> 
     <A href='./delete.do?cs_no=${cs_no}&nowPage=${param.nowPage}'>삭제</A>
-    
-  </ASIDE> 
+  </ASIDE>
   
-  <div class='menu_line'></div>
+  <DIV class='menu_line'></DIV>
 
   <FORM name='frm' method="get" action='./update.do' style="margin-top: 10px;">
       <input type="hidden" name="cs_no" value="${cs_no}">

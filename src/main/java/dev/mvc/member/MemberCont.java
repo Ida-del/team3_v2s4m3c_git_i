@@ -91,7 +91,7 @@ public class MemberCont {
   
   /**
    * 세로고침을 방지하는 메시지 출력
-   * @param memberno
+   * @param m_no
    * @return
    */
   @RequestMapping(value="/member/msg.do", method=RequestMethod.GET)
@@ -165,14 +165,14 @@ public class MemberCont {
   
   /**
    * 회원 조회
-   * @param memberno
+   * @param m_no
    * @return
    */
   @RequestMapping(value="/member/read.do", method=RequestMethod.GET)
-  public ModelAndView read(int memberno){
+  public ModelAndView read(int m_no){
     ModelAndView mav = new ModelAndView();
     
-    MemberVO memberVO = this.memberProc.read(memberno);
+    MemberVO memberVO = this.memberProc.read(m_no);
     mav.addObject("memberVO", memberVO);
     mav.setViewName("/member/read"); // webapp/member/read.jsp
     
@@ -192,7 +192,7 @@ public class MemberCont {
     
     int cnt= memberProc.update(memberVO);
     mav.addObject("cnt", cnt); // redirect parameter 적용
-    mav.addObject("memberno", memberVO.getMemberno()); // redirect parameter 적용
+    mav.addObject("m_no", memberVO.getMemberno()); // redirect parameter 적용
     mav.addObject("url", "update_msg"); // update_msg.jsp, redirect parameter 적용
 
     mav.setViewName("redirect:/member/msg.do");
@@ -202,14 +202,14 @@ public class MemberCont {
   
   /**
    * 회원 삭제
-   * @param memberno
+   * @param m_no
    * @return
    */
   @RequestMapping(value="/member/delete.do", method=RequestMethod.GET)
-  public ModelAndView delete(int memberno){
+  public ModelAndView delete(int m_no){
     ModelAndView mav = new ModelAndView();
     
-    MemberVO memberVO = this.memberProc.read(memberno);
+    MemberVO memberVO = this.memberProc.read(m_no);
     mav.addObject("memberVO", memberVO);
     mav.setViewName("/member/delete"); // webapp/member/delete.jsp
     
@@ -222,13 +222,13 @@ public class MemberCont {
    * @return
    */
   @RequestMapping(value="/member/delete.do", method=RequestMethod.POST)
-  public ModelAndView delete_proc(int memberno){
+  public ModelAndView delete_proc(int m_no){
     ModelAndView mav = new ModelAndView();
     
     // System.out.println("id: " + memberVO.getId());
-    MemberVO memberVO = this.memberProc.read(memberno);
+    MemberVO memberVO = this.memberProc.read(m_no);
     
-    int cnt= memberProc.delete(memberno);
+    int cnt= memberProc.delete(m_no);
     mav.addObject("cnt", cnt); // redirect parameter 적용
     mav.addObject("mname", memberVO.getMname()); // redirect parameter 적용
     mav.addObject("id", memberVO.getId()); // redirect parameter 적용
@@ -241,11 +241,11 @@ public class MemberCont {
   
   /**
    * 패스워드를 변경합니다.
-   * @param memberno
+   * @param m_no
    * @return
    */
   @RequestMapping(value="/member/passwd_update.do", method=RequestMethod.GET)
-  public ModelAndView passwd_update(int memberno){
+  public ModelAndView passwd_update(int m_no){
     ModelAndView mav = new ModelAndView();
     mav.setViewName("/member/passwd_update");
     
@@ -254,18 +254,18 @@ public class MemberCont {
   
   /**
    * 패스워드 변경
-   * @param memberno 회원 번호
+   * @param m_no 회원 번호
    * @param current_passwd 현재 패스워드
    * @param new_passwd 새로운 패스워드
    * @return
    */
   @RequestMapping(value="/member/passwd_update.do", method=RequestMethod.POST)
-  public ModelAndView passwd_update(int memberno, String current_passwd, String new_passwd){
+  public ModelAndView passwd_update(int m_no, String current_passwd, String new_passwd){
     ModelAndView mav = new ModelAndView();
     
     // 현재 패스워드 검사
     HashMap<String, Object> map = new HashMap<String, Object>();
-    map.put("memberno", memberno);
+    map.put("m_no", m_no);
     map.put("passwd", current_passwd);
     
     int cnt = memberProc.passwd_check(map);
@@ -361,7 +361,7 @@ public class MemberCont {
 //    if (count == 1) { // 로그인 성공
 //      // System.out.println(id + " 로그인 성공");
 //      MemberVO memberVO = memberProc.readById(id);
-//      session.setAttribute("memberno", memberVO.getMemberno());
+//      session.setAttribute("m_no", memberVO.getMemberno());
 //      session.setAttribute("id", id);
 //      session.setAttribute("mname", memberVO.getMname());
 //      
@@ -400,12 +400,14 @@ public class MemberCont {
     
     int count = memberProc.login(map);
     if (count == 1) { // 로그인 성공
-      // System.out.println(id + " 로그인 성공");
       MemberVO memberVO = memberProc.readById(id);
-      session.setAttribute("memberno", memberVO.getMemberno());
+      session.setAttribute("m_no", memberVO.getMemberno());
       session.setAttribute("id", id);
       session.setAttribute("mname", memberVO.getMname());
       
+      System.out.println("get id: " + id + " 방금 로그인함.");
+      System.out.println("m_no: " + (int)session.getAttribute("m_no"));
+
       // -------------------------------------------------------------------
       // id 관련 쿠기 저장
       // -------------------------------------------------------------------
@@ -441,7 +443,8 @@ public class MemberCont {
       ck_passwd_save.setMaxAge(60 * 60 * 72 * 10); // 30 day
       response.addCookie(ck_passwd_save);
       // -------------------------------------------------------------------
-      
+      mav.addObject("m_no", memberVO.getMemberno());
+      mav.addObject("id", memberVO.getId());
       mav.setViewName("redirect:/index.do");  
     } else {
       mav.setViewName("redirect:/member/login_fail_msg.jsp");

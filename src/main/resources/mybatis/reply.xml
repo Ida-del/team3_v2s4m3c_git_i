@@ -7,12 +7,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="dev.mvc.reply.ReplyDAOInter">
 
   <insert id="create" parameterType="ReplyVO">
-    INSERT INTO reply(reply_no, review_no, memberno, reply_cont, reply_pw, reply_date)
-    VALUES(reply_seq.nextval, #{review_no}, #{memberno}, #{reply_cont}, #{reply_pw}, sysdate)
+    INSERT INTO reply(reply_no, review_no, m_no, reply_cont, reply_pw, reply_date)
+    VALUES(reply_seq.nextval, #{review_no}, #{m_no}, #{reply_cont}, #{reply_pw}, sysdate)
   </insert>
   
   <select id="list_replyno_desc" resultType="ReplyVO">
-    SELECT reply_no, review_no, memberno, reply_cont, reply_pw, reply_date
+    SELECT reply_no, review_no, m_no, reply_cont, reply_pw, reply_date
     FROM reply
     ORDER BY reply_no DESC
   </select>

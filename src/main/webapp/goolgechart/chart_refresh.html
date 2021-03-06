@@ -1,0 +1,34 @@
+<!DOCTYPE html> 
+<html lang="ko"> 
+<head> 
+<meta charset="UTF-8"> 
+<title></title> 
+<script type="text/JavaScript" 
+          src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+          
+<link href="../css/style.css" rel="Stylesheet" type="text/css">
+</head> 
+<body>
+  <script type="text/javascript">
+    var auto_reload = null;
+    var cnt = 0; // 테스트용 전역 변수
+    
+    $(function() {
+      auto_reload = setInterval(function() { drawChart() }, 3000); // 3초마다 자동 실행
+      // clearInterval(auto_reload); // 자동 실행 중지
+    });
+  
+    function drawChart() {
+      $('#msg').html(++cnt + ' 번째 챠트 새로 고침');
+    }
+  </script>
+   
+  <DIV id='msg' style='font-size: 30px;'></DIV>
+</body>
+ 
+</html>
+
+
+
+
+

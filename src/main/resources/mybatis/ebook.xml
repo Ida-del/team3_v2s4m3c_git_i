@@ -47,6 +47,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     WHERE <![CDATA[ r >= #{startNum} AND r <= #{endNum} ]]>
   </select>
   
+  
+  <!-- 메인 최근 업로드 도서 목록 -->  
+  <select id="list_ebno_desc_latest" resultType="EbookVO">
+    SELECT eb_no, eb_title, eb_author, eb_publisher, eb_pdate, eb_price, eb_saletot, eb_page, eb_thumb, rdate, ROWNUM
+    FROM (
+        SELECT eb_no, eb_title, eb_author, eb_publisher, eb_pdate, eb_price, eb_saletot, eb_page, eb_thumb, rdate
+        FROM ebook
+        ORDER BY rdate DESC
+    )
+    WHERE <![CDATA[ ROWNUM <= 8 ]]>
+  </select>
+  
   <!-- 카테고리 그룹에 포함된 카테고리 목록 출력 -->
   <select id="list_ebook_category" resultType="EbookVO">
     SELECT eb_no, cateno, eb_title, eb_author, eb_publisher, eb_pdate, eb_price, eb_saletot, eb_page, eb_thumb, rdate

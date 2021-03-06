@@ -10,18 +10,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="dev.mvc.memberph.MemberphDAOInter">
   
   <insert id="create" parameterType="MemberphVO">
-    INSERT INTO memberph(orderno, memberno, p_number, p_infor, p_amount, p_state, file1, thumb1, size1)
-    VALUES(memberph_seq.nextval, #{memberno}, #{p_number}, #{p_infor}, #{p_amount}, #{p_state}, #{file1}, #{thumb1}, #{size1})
+    INSERT INTO memberph(orderno, m_no, p_number, p_infor, p_amount, p_state, file1, thumb1, size1)
+    VALUES(memberph_seq.nextval, #{m_no}, #{p_number}, #{p_infor}, #{p_amount}, #{p_state}, #{file1}, #{thumb1}, #{size1})
   </insert>
   
   <select id="list_orderno_asc" resultType="MemberphVO">
-    SELECT orderno, memberno, p_number, p_infor, p_amount, p_state, file1, thumb1, size1
+    SELECT orderno, m_no, p_number, p_infor, p_amount, p_state, file1, thumb1, size1
     FROM memberph      
     ORDER BY orderno asc
   </select>
 
   <select id="read" parameterType="int" resultType="MemberphVO">
-    SELECT orderno, memberno, p_number, p_infor, p_amount, p_state, file1, thumb1, size1
+    SELECT orderno, m_no, p_number, p_infor, p_amount, p_state, file1, thumb1, size1
     FROM memberph
     WHERE orderno = #{orderno}
   </select>

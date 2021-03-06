@@ -28,10 +28,10 @@ public interface MemberDAOInter {
   
   /**
    * 회원 조회
-   * @param memberno
+   * @param m_no
    * @return
    */
-  public MemberVO read(int memberno);
+  public MemberVO read(int m_no);
   
   /**
    * 회원 정보 조회
@@ -49,10 +49,10 @@ public interface MemberDAOInter {
   
   /**
    * 회원 삭제 처리
-   * @param memberno
+   * @param m_no
    * @return
    */
-  public int delete(int memberno);
+  public int delete(int m_no);
   
   /**
    * 현재 패스워드 검사

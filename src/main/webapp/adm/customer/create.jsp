@@ -8,12 +8,7 @@
 <jsp:include page="/adm/menu/left.jsp" flush='false' />
 <jsp:include page="/adm/menu/top.jsp" flush='false' />
  
-<DIV class='title_line'> 1:1 문의 등록 </DIV>
-
-<!-- <ASIDE class="aside_left">
-  <A href='./list_all.do'>접수된 문의내역</A>
-</ASIDE> 
-<div class='menu_line'></div> -->
+<DIV class='title_line'>문의 등록</DIV>
 
 <FORM name='frm' method='POST' action='./create.do' class="form-horizontal" enctype="multipart/form-data">
   <%-- FK 전달 --%>

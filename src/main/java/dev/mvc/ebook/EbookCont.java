@@ -49,6 +49,17 @@ public class EbookCont {
   public EbookCont() {
     System.out.println( "--> EbookCont created." );
   }
+  
+  
+  @RequestMapping(value = { "/", "/index.do" }, method=RequestMethod.GET)
+  public ModelAndView latest() {
+    ModelAndView mav = new ModelAndView();
+    List<EbookVO> list = this.ebookProc.list_ebno_desc_latest();
+    
+    mav.addObject("list", list);
+    mav.setViewName("index");
+    return mav;
+  }
 
   /**
    * ÀÌºÏ µî·Ï Æû
@@ -651,7 +662,7 @@ public class EbookCont {
         //int cnt = categrp_Cate_join.getCnt();
 
  
-        url.append("  <a class='dropdown-item' href='" + request.getContextPath() + "/ebook/list.do?cateno="
+        url.append("  <a style='color:#000;' class='dropdown-item' href='" + request.getContextPath() + "/ebook/list.do?cateno="
             + categrp_Cate_join.getCateno() + "'>");
         url.append(name);
         url.append("  </a>");

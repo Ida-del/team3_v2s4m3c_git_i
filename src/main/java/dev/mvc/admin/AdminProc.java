@@ -1,80 +1,58 @@
 package dev.mvc.admin;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 
 @Component("dev.mvc.admin.AdminProc")
 public class AdminProc implements AdminProcInter {
-  @Value("${admin1}")  // properties 접근
-  private String admin1;
+  
+  @Autowired
+  private AdminDAOInter adminDAO; 
 
-  @Value("${admin2}")
-  private String admin2;
-  
-  @Value("${admin3}")
-  private String admin3;
-  
-  /**
-   * 관리자 인지 검사
-   * @param info
-   * @param id
-   * @return
-   */
-  public boolean admin_check(String id_admin, String passwd_admin) {
-    boolean sw = false;
-    String[] admins = {admin1, admin2, admin3};
-    
-    for (String admin:admins) {
-      String[] tokens = admin.split("/");  // admin1=admin1/1234/\uAD00\uB9AC\uC7901
-      if (tokens[0].equals(id_admin) && tokens[1].equals(passwd_admin)) {
-        sw = true;
-      }
-    }
-    
-    return sw;
+  public AdminProc() {
+    System.out.println("--> AdminProc created.");
   }
   
-  /**
-   * 관리자 로그인 처리
-   */
   @Override
-  public boolean login(String id_admin, String passwd_admin){
-    System.out.println(admin1);
-    System.out.println(admin2);
-    System.out.println(admin3);
-   
-    // 관리자 아이디, 패스워드 검사
-    boolean sw = admin_check(id_admin, passwd_admin); 
-    
-    return sw;
+  public List<AdminVO> list() {
+    List<AdminVO> list = this.adminDAO.list();
+    return list;
+  }
+
+  @Override
+  public AdminVO readById(String adm_id) {
+    AdminVO adminVO = this.adminDAO.readById(adm_id);
+    return adminVO;
+  }
+
+  @Override
+  public int login(Map<String, Object> map) {
+    int cnt = this.adminDAO.login(map);
+    return cnt;
   }
   
-  /**
-   * 관리자로 로그인된 상태인지 체크
-   */
   @Override
   public boolean isAdmin(HttpSession session){
-    boolean sw = false;
+    boolean sw = false;   // 로그인하지 않은 것으로 초기화
     
-    String id_admin = (String)session.getAttribute("id_admin");
+    String adm_id = (String)session.getAttribute("adm_id");
     
-    if (id_admin != null){
+    if (adm_id != null){
       sw = true;
     }
     return sw;
   }
-  
-  /**
-   * 관리자 목록
-   */
-  @Override
-  public String list() {
-    String admins = "";
-    admins = admin1 + "\n" + admin2 + "\n" + admin3;  
-    
-    return admins;
-  }
+
+
+
+
   
 }
+
+

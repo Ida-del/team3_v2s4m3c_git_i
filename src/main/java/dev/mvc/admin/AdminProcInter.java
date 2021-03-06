@@ -1,27 +1,30 @@
 package dev.mvc.admin;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
-public interface AdminProcInter {
-  /**
-   * 관리자 목록
-   * @return
-   */
-  public String list();
+public interface AdminProcInter  {
+  
+  public List<AdminVO> list();
+
+  public AdminVO readById(String adm_id);
   
   /**
-   * 관리자인지 검사
+   * session을 사용해 로그인된 관리자 계정인지 체크
    * @param session
    * @return
    */
   public boolean isAdmin(HttpSession session);
+
+  public int login(Map<String,Object> map);
   
-  /**
-   * 로그인 처리
-   * @param id_admin
-   * @param passwd_admin
-   * @return
-   */
-  public boolean login(String id_admin, String passwd_admin);
-    
+  
+  
+  
+  
+  
 }
+   
+ 

@@ -27,7 +27,7 @@ public interface MemberphDAOInter {
 
   /**
    * 수정용 조회
-   * @param memberno
+   * @param m_no
    * @return
    */
   public MemberphVO read_update(int orderno);

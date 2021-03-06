@@ -39,8 +39,17 @@
                             dev.mvc.ebook,
                             dev.mvc.ebook.attachfile,
                             dev.mvc.reply,
+                            dev.mvc.ncate,
                             dev.mvc.notice,
-                            dev.mvc.customer"/>
+                            dev.mvc.review,
+                            dev.mvc.customer,
+                            dev.mvc.cart,
+                            dev.mvc.cs_attachfile,
+                            dev.mvc.survey,
+                            dev.mvc.survey_item,
+                            dev.mvc.item_option,
+                            dev.mvc.survey_chart,
+                            dev.mvc.order_req"/>
     <property name="mapperLocations" value="classpath:mybatis/*.xml" />
   </bean>
   

@@ -22,7 +22,7 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="dev.mvc.team3" />
+	<context:component-scan base-package="dev.mvc.team3_testgit" />
   <context:component-scan base-package="dev.mvc.member" />
 	<context:component-scan base-package="dev.mvc.memberph" />
   <context:component-scan base-package="dev.mvc.bookshelf" />
@@ -48,16 +48,19 @@
   <!-- 데이터과학자 -->
   <context:component-scan base-package="dev.mvc.reply"/>
   <context:component-scan base-package="dev.mvc.notice"/>
+  <context:component-scan base-package="dev.mvc.ncate"/>
+  <context:component-scan base-package="dev.mvc.review"/>
   
   <!-- 데이터아키텍트  -->
   <context:component-scan base-package="dev.mvc.customer"/>  
-  
-  
-  <!-- 관리자 목록 -->
-  <beans:bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"> 
-    <beans:property name="location" value="/WEB-INF/config/admin.properties"/> 
-    <beans:property name="fileEncoding" value="UTF-8" /> 
-  </beans:bean>
+  <context:component-scan base-package="dev.mvc.cart"/>  
+  <context:component-scan base-package="dev.mvc.cs_attachfile"/>  
+  <context:component-scan base-package="dev.mvc.survey"/>
+  <context:component-scan base-package="dev.mvc.survey_item"/>
+  <context:component-scan base-package="dev.mvc.item_option"/>
+  <context:component-scan base-package="dev.mvc.survey_chart"/>
+  <context:component-scan base-package="dev.mvc.order_req"/>
+
 	
 	
 </beans:beans>

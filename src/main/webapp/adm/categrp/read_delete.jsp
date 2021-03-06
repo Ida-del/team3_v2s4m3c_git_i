@@ -31,7 +31,7 @@
           <div style="margin: 0 auto;">
           <button type="submit" class="btn btn-primary">삭제</button>
           <button type="button" onclick="location.href='./list.do'"
-            class="btn" style="border: 1px solid #ccc;">목록</button>
+            class="btn" style="border: 1px solid #ccc;">취소</button>
           </div>
         </div>
       </div>

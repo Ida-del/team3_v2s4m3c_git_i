@@ -39,9 +39,9 @@ public class MemberProc implements MemberProcInter{
   }
 
   @Override
-  public MemberVO read(int memberno) {
+  public MemberVO read(int m_no) {
     MemberVO memberVO = null;
-    memberVO = this.memberDAO.read(memberno);
+    memberVO = this.memberDAO.read(m_no);
     return memberVO;
   }
 
@@ -59,8 +59,8 @@ public class MemberProc implements MemberProcInter{
   }
 
   @Override
-  public int delete(int memberno) {
-    int cnt = this.memberDAO.delete(memberno);
+  public int delete(int m_no) {
+    int cnt = this.memberDAO.delete(m_no);
     return cnt;
   }
 

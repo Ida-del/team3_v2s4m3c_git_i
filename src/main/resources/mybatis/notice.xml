@@ -6,20 +6,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  
 <mapper namespace="dev.mvc.notice.NoticeDAOInter">
   <insert id="create" parameterType="NoticeVO">
-    INSERT INTO notice(noticeno, memberno, title, content, ip, notice_pw, nfile1, nthumb1, nsize1, writer, rdate, visible)
-    VALUES(notice_seq.nextval, #{memberno}, #{title}, #{content}, #{ip}, #{notice_pw},
+    INSERT INTO notice(noticeno, m_no, title, content, ip, notice_pw, nfile1, nthumb1, nsize1, writer, rdate, visible)
+    VALUES(notice_seq.nextval, #{m_no}, #{title}, #{content}, #{ip}, #{notice_pw},
      #{nfile1}, #{nthumb1}, #{nsize1}, #{writer}, sysdate, #{visible})
     </insert>
   
   <select id="list_noticeno_asc" resultType="NoticeVO">
-    SELECT noticeno, memberno, title, content, ip, notice_pw, nfile1, nthumb1, nsize1,
+    SELECT noticeno, m_no, title, content, ip, notice_pw, nfile1, nthumb1, nsize1,
      writer, rdate, visible
     FROM notice
     ORDER BY noticeno ASC
   </select>
   
   <select id="read" resultType="NoticeVO" parameterType="int">
-    SELECT noticeno, memberno, title, content, ip, notice_pw, nfile1, nthumb1, nsize1,
+    SELECT noticeno, m_no, title, content, ip, notice_pw, nfile1, nthumb1, nsize1,
      writer, rdate, visible
     FROM notice
     WHERE noticeno=#{noticeno}

@@ -36,7 +36,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="${pageContext.request.contextPath}/adm">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="${pageContext.request.contextPath}/">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-grin-alt"></i>
         </div>
@@ -48,9 +48,9 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="/">
+        <a class="nav-link" href="${pageContext.request.contextPath}/">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
+          <span>Ebook3</span></a>
       </li>
       
       <!-- Nav Item - Dashboard -->
@@ -89,7 +89,34 @@
           <span>EBook 전체 목록</span>
         </a>
       </li>
-
+     
+     <!-- DA: 추가 시작-->
+      <li class="nav-item">
+        <a class="nav-link" href="${pageContext.request.contextPath}/adm/customer/list_all.do">
+          <i class="far fa-comments"></i>
+          <span>고객센터</span>
+        </a>
+      </li>  
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#survey" aria-expanded="true" aria-controls="survey">
+          <i class="far fa-list-alt"></i>
+          <span>설문조사</span>
+        </a>
+        <div id="survey" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">설문 조사</h6>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/adm/survey/list.do">설문조사 리스트</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="${pageContext.request.contextPath}/adm/orderreq/list_all.do">
+          <i class="far fa-list-alt"></i>
+          <span>주문요청</span>
+        </a>
+      </li>        
+      <!-- DA: 추가 끝-->
+      
       <!-- Divider -->
       <hr class="sidebar-divider">
 

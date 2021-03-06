@@ -5,18 +5,18 @@ import org.springframework.web.multipart.MultipartFile;
 
 /*CREATE TABLE bookshelf(
     bookshelfno                       NUMBER(20)     NOT NULL    PRIMARY KEY,
-    memberno                          NUMBER(10)     NOT NULL,
+    m_no                          NUMBER(10)     NOT NULL,
     p_name                        VARCHAR2(20)     NOT NULL,
     p_infor                         VARCHAR2(50)     NOT NULL,
     file1                                   VARCHAR(100)          NULL,
     thumb1                              VARCHAR(100)          NULL,
     size1                                 NUMBER(10)      DEFAULT 0 NULL,  
-  FOREIGN KEY (memberno) REFERENCES memberin (memberno)
+  FOREIGN KEY (m_no) REFERENCES memberin (m_no)
 );*/
 
 public class BookshelfVO {
   private int bookshelfno;
-  private int memberno;
+  private int m_no;
   private int p_name;
   private String p_infor;
   /** ¿ÃπÃ¡ˆ */
@@ -44,10 +44,10 @@ public class BookshelfVO {
     this.bookshelfno = bookshelfno;
   }
   public int getMemberno() {
-    return memberno;
+    return m_no;
   }
-  public void setMemberno(int memberno) {
-    this.memberno = memberno;
+  public void setMemberno(int m_no) {
+    this.m_no = m_no;
   }
   public int getP_name() {
     return p_name;

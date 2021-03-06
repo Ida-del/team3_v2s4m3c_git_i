@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import dev.mvc.tool.Tool;
+
 
 @Component("dev.mvc.ebook.EbookProc")
 public class EbookProc implements EbookProcInter {
@@ -29,6 +31,12 @@ public class EbookProc implements EbookProcInter {
   public List<EbookVO> list_ebno_desc() {
     List<EbookVO> list = this.ebookDAO.list_ebno_desc();
     
+    return list;
+  }
+  
+  @Override
+  public List<EbookVO> list_ebno_desc_latest() {
+    List<EbookVO> list = this.ebookDAO.list_ebno_desc_latest();
     return list;
   }
   
@@ -72,6 +80,11 @@ public class EbookProc implements EbookProcInter {
   public EbookVO read(int eb_no) {
     EbookVO ebookVO = null;
     ebookVO = this.ebookDAO.read(eb_no);
+    
+    String useinfo = ebookVO.getEb_useinfo();
+    useinfo = Tool.convertChar(useinfo);
+    
+    ebookVO.setEb_useinfo(useinfo);
     
     return ebookVO;
   }
@@ -214,6 +227,8 @@ public class EbookProc implements EbookProcInter {
      
     return str.toString(); 
   }
+
+  
 
 
 }

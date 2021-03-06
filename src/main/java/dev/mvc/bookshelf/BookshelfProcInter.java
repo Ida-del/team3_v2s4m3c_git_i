@@ -24,7 +24,7 @@ public interface BookshelfProcInter {
 
   /**
    * 수정용 조회
-   * @param memberno
+   * @param m_no
    * @return
    */
   public BookshelfVO read_update(int bookshelfno);

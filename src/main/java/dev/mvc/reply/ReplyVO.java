@@ -12,7 +12,7 @@ public class ReplyVO {
   
   private int review_no;
   
-  private int memberno;
+  private int m_no;
   
   private String reply_cont="";
   
@@ -36,12 +36,13 @@ public class ReplyVO {
     this.review_no = review_no;
   }
 
-  public int getMemberno() {
-    return memberno;
+ 
+  public int getM_no() {
+    return m_no;
   }
 
-  public void setMemberno(int memberno) {
-    this.memberno = memberno;
+  public void setM_no(int m_no) {
+    this.m_no = m_no;
   }
 
   public String getReply_cont() {

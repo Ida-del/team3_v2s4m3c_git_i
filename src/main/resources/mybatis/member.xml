@@ -16,24 +16,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   </select>
   
   <insert id="create" parameterType="memberVO">
-    INSERT INTO member(memberno, id, passwd, mname, email, tel, zipcode, address1, address2, mdate)
+    INSERT INTO member(m_no, id, passwd, mname, email, tel, zipcode, address1, address2, mdate)
     VALUES (member_seq.nextval, #{id}, #{passwd}, #{mname}, #{email}, #{tel}, #{zipcode}, #{address1}, #{address2}, sysdate)
   </insert>
   
   <select id="list" resultType="MemberVO">
-    SELECT memberno, id, passwd, mname, tel, email, zipcode, address1, address2, mdate
+    SELECT m_no, id, passwd, mname, tel, email, zipcode, address1, address2, mdate
     FROM member
-    ORDER BY memberno ASC
+    ORDER BY m_no ASC
   </select>
   
   <select id="read" resultType="MemberVO" parameterType="int">
-    SELECT memberno, id, passwd, mname, tel, email, zipcode, address1, address2, mdate
+    SELECT m_no, id, passwd, mname, tel, email, zipcode, address1, address2, mdate
     FROM member
-    WHERE memberno = #{memberno}
+    WHERE m_no = #{m_no}
   </select>  
 
   <select id="readById" resultType="MemberVO" parameterType="String">
-    SELECT memberno, id, passwd, mname, tel, email, zipcode, address1, address2, mdate
+    SELECT m_no, id, passwd, mname, tel, email, zipcode, address1, address2, mdate
     FROM member
     WHERE id = #{id}
   </select>
@@ -42,30 +42,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     UPDATE member 
     SET mname=#{mname}, email=#{email}, tel=#{tel}, zipcode=#{zipcode},
           address1=#{address1}, address2=#{address2}
-    WHERE memberno=#{memberno}
+    WHERE m_no=#{m_no}
   </update>
   
   <delete id="delete" parameterType="int">
     DELETE FROM member
-    WHERE memberno=#{memberno}
+    WHERE m_no=#{m_no}
   </delete>
   
   <!-- 현재 패스워드 검사 -->
   <select id="passwd_check" parameterType="HashMap" resultType="int">
-    SELECT COUNT(memberno) as cnt
+    SELECT COUNT(m_no) as cnt
     FROM member
-    WHERE memberno=#{memberno} AND passwd=#{passwd}
+    WHERE m_no=#{m_no} AND passwd=#{passwd}
   </select>
   
   <!-- 패스워드 변경 -->
   <update id="passwd_update" parameterType="HashMap">
     UPDATE member
     SET passwd=#{passwd}
-    WHERE memberno=#{memberno}
+    WHERE m_no=#{m_no}
   </update>
   
   <select id="login" resultType="int" parameterType="Map">
-    SELECT COUNT(memberno) as cnt
+    SELECT COUNT(m_no) as cnt
     FROM member
     WHERE id=#{id} AND passwd=#{passwd}
   </select>

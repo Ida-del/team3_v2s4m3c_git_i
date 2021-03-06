@@ -50,7 +50,7 @@
     <FORM name='frm' method='POST' action='./update.do'
       class="form-horizontal form_bs">
       <!-- FK memberno 지정 -->
-      <input type='hidden' name='memberno' id='memberno' value='1'>
+      <input type='hidden' name='m_no' id='m_no' value='${noticeVO.m_no }'>
 
       <input type='hidden' name='noticeno' id='noticeno' value='${noticeVO.noticeno}'>
 
@@ -78,7 +78,6 @@
             autofocus="autofocus">
         </div>
       </div>
-      
       
 		  <div class="form-group">
 		     <div class="col-md-12">

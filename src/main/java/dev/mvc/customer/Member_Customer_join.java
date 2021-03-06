@@ -132,7 +132,7 @@ public class Member_Customer_join {
   public String getR_mid() {
     return r_mid;
   }
-  public void setR_mid(String r_mid) {
+  public void setR_id(String r_mid) {
     this.r_mid = r_mid;
   }
   public String getR_mpasswd() {
